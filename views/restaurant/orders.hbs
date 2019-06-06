@@ -1,0 +1,44 @@
+{{# if products}}
+<div class="row">
+    <div class="col-sm-6 colmd-6 col-md-offset-3 col-sm-offset-3 col-centered">
+        <ul class="list-group">
+            
+            {{# each products }}
+            
+                <li class="list-group-item">
+                    <strong>{{ this.item.title }}</strong>
+                    <span class="label label-success">{{ this.price }}</span>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li ><a href="/cart/reducebyone/{{ this.item._id }}"><span style="color:#000000">Reduce by 1</span></a></li>
+                            <li ><a href="/cart/removeall/{{ this.item._id }}"><span style="color:#000000">Remove all</span></a></li>
+                        </ul>
+                    </div>
+                    <span class="badge">{{ this.qty }}</span>
+                </li>
+            {{/ each}}
+            
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6 colmd-6 col-md-offset-3 col-sm-offset-3 col-centered">
+        <strong>Total: {{ totalPrice }}</strong>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-6 colmd-6 col-md-offset-3 col-sm-offset-3 col-centered">
+        <button class="btn btn-success">Checkout</button>
+    </div>
+</div>
+{{ else }}
+<div class="row">
+    <div class="col-sm-6 colmd-6 col-md-offset-3 col-sm-offset-3 col-centered">
+        <strong>No Item present </strong>
+    </div>
+</div>
+{{/ if}}
+
